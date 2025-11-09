@@ -10,3 +10,4 @@ matplotlib
 google-cloud-storage
 tqdm
 streamlit
+seaborn
