@@ -114,7 +114,7 @@ run_yolo = st.button("🚀 Run YOLO Detections")
 if run_yolo:
     model = YOLO(model_path)
     videos = [VIDEO_DIR / f for f in os.listdir(VIDEO_DIR) if f.lower().endswith((".mp4", ".mov", ".avi", ".mkv"))]
-    CONF_THRESH, IMG_SZ, DEVICE = 0.25, 640, 0
+    CONF_THRESH, IMG_SZ, DEVICE = 0.25, 640, 'cpu'
     st.info("Running detections...")
     total_dets = 0
     progress = st.progress(0)
@@ -130,7 +130,7 @@ if run_yolo:
             if frame_idx % 2 != 0:
                 frame_idx += 1
                 continue
-            results = model.predict(frame, imgsz=IMG_SZ, conf=CONF_THRESH, device=DEVICE, verbose=False)
+            results = model.predict(frame, imgsz=IMG_SZ, conf=CONF_THRESH, device='cpu', verbose=False)
             for r in results:
                 annotated = r.plot()
                 cv2.imwrite(str(out_dir / f"frame_{frame_idx:05d}.jpg"), annotated)
