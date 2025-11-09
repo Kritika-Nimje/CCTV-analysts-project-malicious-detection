@@ -1,0 +1,12 @@
+
+dash
+dash-bootstrap-components
+plotly
+pandas
+numpy
+opencv-python-headless
+ultralytics
+matplotlib
+google-cloud-storage
+tqdm
+streamlit
